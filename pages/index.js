@@ -88,9 +88,17 @@ export default function Home({ data }) {
 export async function getStaticProps(context) {
   const res = await fetch(process.env.NEXT_PUBLIC_STRAPI_AROMA_API);
   const aroma_data = await res.json();
+
+  if (aroma_data) {
+    return {
+      props: {
+        data: aroma_data,
+      }, // will be passed to the page component as props
+    };
+  }
   return {
     props: {
-      data: aroma_data,
+      data: {},
     }, // will be passed to the page component as props
   };
 }
