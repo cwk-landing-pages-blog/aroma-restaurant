@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    FrontEnd Developer: kolpaja
+    Site: https://codewithkoli.com/
+    Contact: kolpaja [@] gmail.com
+    Location: Tirane, Albania
+
+
+# TECHNOLOGY
+
+    Last update: 18/5/2023
+    Language: English
+    Doctype: HTML5
+    Software: Visual Studio Code
+    Standards: HTML5, CSS3, SCSS, React Js, Next Js, Strapi, TailwindCSS
+

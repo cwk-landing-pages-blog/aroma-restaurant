@@ -26,15 +26,11 @@ export default function Footer() {
                     className='w-8'
                   />
                 </span>
-                <span>Nextly</span>
+                <span>Aroma Restaurant</span>
               </Link>
             </div>
 
-            <div className='max-w-md mt-4 text-gray-500 dark:text-gray-400'>
-              Nextly is a free landing page & marketing website template for
-              startups and indie projects. Its built with Next.js & TailwindCSS.
-              And its completely open-source.
-            </div>
+            <div className='max-w-md mt-4 text-gray-500 dark:text-gray-400'></div>
           </div>
 
           <div className=''>
@@ -73,10 +69,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className='my-10 text-sm text-center text-gray-600 dark:text-gray-400'>
+        <div className='my-10 text-lg text-center text-gray-100'>
           Copyright © {new Date().getFullYear()}. Made with ♥ by{' '}
           <a href='kolpaja' target='_blank' rel='noopener '>
-            Code with Koli
+            CWK ( codewithkoli )
           </a>
         </div>
       </Container>

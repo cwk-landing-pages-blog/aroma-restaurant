@@ -1,10 +1,26 @@
 import Link from 'next/link';
-import ThemeChanger from './DarkSwitch';
 import { Disclosure } from '@headlessui/react';
 import Image from 'next/image';
 
-export default function Navbar() {
-  const navigation = ['Product', 'Features', 'Pricing', 'Company', 'Blog'];
+export default function Navbar({ title }) {
+  const navigation = [
+    {
+      key: 'services',
+      name: 'Services',
+    },
+    {
+      key: 'menu',
+      name: 'Menu',
+    },
+    {
+      key: 'about',
+      name: 'About Aroma',
+    },
+    {
+      key: 'find-us',
+      name: 'Find Us',
+    },
+  ];
 
   return (
     <div className='w-full'>
@@ -20,14 +36,14 @@ export default function Navbar() {
                 >
                   <span>
                     <Image
-                      src='/img/logo.svg'
-                      alt='N'
+                      src='/icons/restaurant.png'
+                      alt='A'
                       width='32'
                       height='32'
                       className='w-8'
                     />
                   </span>
-                  <span>Nextly</span>
+                  <span>{title}</span>
                 </Link>
 
                 <Disclosure.Button
@@ -82,13 +98,13 @@ export default function Navbar() {
         {/* menu  */}
         <div className='hidden text-center lg:flex lg:items-center'>
           <ul className='items-center justify-end flex-1 pt-6 list-none lg:pt-0 lg:flex'>
-            {navigation.map((menu, index) => (
-              <li className='mr-3 nav__item' key={index}>
+            {navigation.map((menu) => (
+              <li className='mr-3 nav__item' key={menu.key}>
                 <Link
-                  href='/'
+                  href={`/#${menu.key}`}
                   className='inline-block px-4 py-2 text-lg font-normal text-gray-800 no-underline rounded-md dark:text-gray-200 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800'
                 >
-                  {menu}
+                  {menu.name}
                 </Link>
               </li>
             ))}
@@ -100,7 +116,7 @@ export default function Navbar() {
             href='/'
             className='px-6 py-2 text-white bg-indigo-600 rounded-md md:ml-5'
           >
-            Get Started
+            Order Now
           </Link>
         </div>
       </nav>

@@ -4,6 +4,7 @@
 @layer base {
   html,
   body {
-    @apply dark:bg-slate-800;
+    @apply bg-violet-600;
+    /* background-color: #a890c3; */
   }
 }

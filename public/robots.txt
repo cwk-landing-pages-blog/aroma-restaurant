@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Sitemaps
+
+# Host
+Host: 
+
+
