@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Container from './container';
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 
 import userOneImg from '../public/img/user1.jpg';
 import userTwoImg from '../public/img/user2.jpg';
@@ -22,6 +23,13 @@ export default function Testimonials() {
               name='Sarah Steiner'
               title='VP Sales at Google'
             />
+            <div className='flex m-4 px-4 py-2 rounded-md gap-2 w-[200px] justify-between bg-lime-600'>
+              <FaStar color='yellow' size={24} />
+              <FaStar color='yellow' size={24} />
+              <FaStarHalfAlt color='yellow' size={24} />
+              <FaStar color='white' size={24} />
+              <FaStar color='white' size={24} />
+            </div>
           </div>
         </div>
         <div className=''>

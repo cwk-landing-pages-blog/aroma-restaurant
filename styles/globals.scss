@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Mogra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@layer base {
+  html,
+  body {
+    background-color: rgb(13, 24, 25);
+    /* background-color: #a890c3; */
+  }
+}
+
+.header_title{
+  font-family: 'Pacifico', cursive;
+}
+.icon_font{
+  font-family: 'Bebas Neue', sans-serif;
+}

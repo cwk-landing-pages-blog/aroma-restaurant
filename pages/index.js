@@ -23,6 +23,7 @@ export default function Home({ data }) {
   const heroImg =
     process.env.NEXT_PUBLIC_AROMA_URL + hero_img?.data?.attributes?.url;
 
+  console.log({ heroImg });
   const mainSlogan = slogans?.data[0]?.attributes;
   const metadata = {
     title: name,
