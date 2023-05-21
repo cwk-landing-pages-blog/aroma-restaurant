@@ -1,4 +1,4 @@
-import Container from './container';
+import Container from '../ui/container';
 
 export default function Cta() {
   return (

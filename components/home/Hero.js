@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Container from './container';
+import Container from '../ui/container';
 
 export default function Hero({ img, slogan }) {
   return (
@@ -50,6 +50,7 @@ export default function Hero({ img, slogan }) {
           </div>
         </div>
       </Container>
+
       <Container>
         <div className='flex flex-col justify-center'>
           <div className='text-2xl font-semibold text-center text-gray-100'>

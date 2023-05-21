@@ -22,6 +22,7 @@ export default function Navbar({ title }) {
     },
   ];
 
+  // TODO better navbar with the new header for more quick infos and actions
   return (
     <div className='w-full'>
       <nav className='container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0'>

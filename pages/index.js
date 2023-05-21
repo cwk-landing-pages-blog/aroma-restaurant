@@ -1,16 +1,16 @@
 import Head from 'next/head';
-import Hero from '../components/hero';
-import Navbar from '../components/navbar';
-import SectionTitle from '../components/sectionTitle';
-
-import { benefitOne, benefitTwo } from '../components/data';
-import Video from '../components/video';
-import Benefits from '../components/benefits';
-import Footer from '../components/footer';
-import Testimonials from '../components/testimonials';
-import Cta from '../components/cta';
-import Faq from '../components/faq';
+import Navbar from '../components/ui/navbar';
+import Footer from '../components/ui/footer';
 import Layout from '@/components/Layout';
+import OurStory from '@/components/home/OurStory';
+import SpecialDish from '@/components/home/SpecialDish';
+import RestaurantMenu from '@/components/home/RestaurantMenu';
+import FeaturedMenu from '@/components/home/FeaturedMenu';
+import OurStrength from '@/components/home/OurStrength';
+import Address from '@/components/home/Address';
+import Hero from '@/components/home/hero';
+import Testimonials from '@/components/home/testimonials';
+import Faq from '@/components/home/faq';
 
 export default function Home({ data }) {
   console.log('🚀 ~ file: index.js:15 ~ Home ~ data:', data);
@@ -43,44 +43,33 @@ export default function Home({ data }) {
       </Head>
 
       <Navbar title={name} />
+
+      {/* TODO hero + slogans + what we serve*/}
       <Hero img={heroImg} slogan={mainSlogan} />
 
-      {/* TODO restaurant menu layout */}
-      {/* <SectionTitle
-        pretitle='Italian food Benefits'
-        title=' Why should you use this landing page'
-      >
-        Nextly is a free landing page & marketing website template for startups
-        and indie projects. Its built with Next.js & TailwindCSS. And its
-        completely open-source.
-      </SectionTitle> */}
-      {/* <Benefits data={benefitOne} /> */}
-      {/* <Benefits imgPos='right' data={benefitTwo} /> */}
-      {/* <SectionTitle
-        pretitle='Watch a video'
-        title='Learn how to fullfil your needs'
-      >
-        This section is to highlight a promo or demo video of your product.
-        Analysts says a landing page with video has 3% more conversion rate. So,
-        don&apos;t forget to add one. Just like this.
-      </SectionTitle> */}
-      {/* <Video /> */}
+      {/* TODO our story section */}
+      <OurStory />
 
-      {/* TODO add testimonials */}
-      <SectionTitle
-        pretitle='Testimonials'
-        title="Here's what our customers said"
-      >
-        Testimonails is a great way to increase the brand trust and awareness.
-        Use this section to highlight your popular customers.
-      </SectionTitle>
+      {/* Special Dish, featured dish comes along with the info that as The Meal of the dat */}
+      <SpecialDish />
+
+      {/* tab menu for each category main ones */}
+      <RestaurantMenu />
+
+      {/* featured carousel menu items */}
+      <FeaturedMenu />
+
+      {/* Testimonials */}
       <Testimonials />
-      <SectionTitle pretitle='FAQ' title='Frequently Asked Questions'>
-        Answer your customers possible questions here, it will increase the
-        conversion rate as well as support or chat requests.
-      </SectionTitle>
+
+      {/* Our strength section */}
+      <OurStrength />
+
+      {/* FAQ section */}
       <Faq />
-      <Cta />
+
+      <Address />
+
       <Footer />
     </Layout>
   );
