@@ -1,55 +1,44 @@
 import Image from 'next/image';
 import Container from '../ui/container';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default function Hero({ img, slogan }) {
+// Import Swiper styles
+import 'swiper/css';
+import Link from 'next/link';
+
+export default function Hero({ hero }) {
   return (
     <>
-      <Container className='flex flex-wrap '>
-        <div className='flex items-center w-full lg:w-1/2'>
-          <div className='max-w-2xl mb-8'>
-            <h1
-              style={{ color: '#e4c590' }}
-              className='text-2xl font-bold leading-snug tracking-tight text-gray-800 lg:text-4xl lg:leading-tight xl:text-4xl xl:leading-tight dark:text-white'
-            >
-              {slogan?.title}
-            </h1>
-            <p className='py-5 text-xl leading-normal text-gray-100 lg:text-xl xl:text-2xl'>
-              {slogan?.description}
-            </p>
-
-            <div className='flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row'>
-              <a
-                href='https://web3templates.com/templates/nextly-landing-page-template-for-startups'
-                target='_blank'
-                rel='noopener'
-                className='px-8 py-4 text-lg font-semibold text-center text-gray-950 bg-lime-200 rounded-md '
-              >
-                Dine with us
-              </a>
-              <a
-                href='https://github.com/web3templates/nextly-template/'
-                target='_blank'
-                rel='noopener'
-                className='px-8 py-4 text-xl font-medium text-center text-white bg-fuchsia-400 rounded-md'
-              >
-                <span>Schedule now</span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className='flex items-center justify-center w-full lg:w-1/2'>
-          <div className=''>
-            <Image
-              src={img}
-              width='616'
-              height='617'
-              alt='Hero Illustration'
-              layout='intrinsic'
-              loading='eager'
-            />
-          </div>
-        </div>
-      </Container>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        {hero.map((item) => {
+          console.log('🚀 ~ file: Hero.js:21 ~ {hero.map ~ item:', item);
+          const imgUrl =
+            process.env.NEXT_PUBLIC_RENDER_URL +
+            item?.img?.data?.attributes?.url;
+          return (
+            <SwiperSlide key={item.id}>
+              <div className='hero_content'>
+                <img src={imgUrl} alt='asd' />
+                <section className='content'>
+                  <h2 className='content_title'>{item.content.title}</h2>
+                  <span className='content_divider'>divider</span>
+                  <h1 className='content_subtitle'>{item.content.subtitle}</h1>
+                  <p className='content_desc'>{item.content.description}</p>
+                  <Link href={item.content.cta_href} className='content_btn'>
+                    {item.content.cta_title}
+                  </Link>
+                </section>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
 
       <Container>
         <div className='flex flex-col justify-center'>

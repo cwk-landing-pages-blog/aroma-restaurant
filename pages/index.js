@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Navbar from '../components/ui/navbar';
+import Navbar from '../components/navbar';
 import Footer from '../components/ui/footer';
 import Layout from '@/components/Layout';
 import OurStory from '@/components/home/OurStory';
@@ -8,44 +8,29 @@ import RestaurantMenu from '@/components/home/RestaurantMenu';
 import FeaturedMenu from '@/components/home/FeaturedMenu';
 import OurStrength from '@/components/home/OurStrength';
 import Address from '@/components/home/Address';
-import Hero from '@/components/home/hero';
-import Testimonials from '@/components/home/testimonials';
-import Faq from '@/components/home/faq';
+import Hero from '@/components/home/Hero';
+import Testimonials from '@/components/home/Testimonials';
+import Faq from '@/components/home/Faq';
+import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 
-export default function Home({ data }) {
-  console.log('🚀 ~ file: index.js:15 ~ Home ~ data:', data);
-  const { name, description, featured_image, slogans, hero_img } =
-    data?.data?.attributes;
+export default function Home({ page, hero, weOffer, ourStrength, menu }) {
+  console.log({ page, hero, weOffer, ourStrength, menu });
 
-  const imgUrl =
-    process.env.NEXT_PUBLIC_AROMA_URL + featured_image?.data?.attributes?.url;
-
-  const heroImg =
-    process.env.NEXT_PUBLIC_AROMA_URL + hero_img?.data?.attributes?.url;
-
-  console.log({ heroImg });
-  const mainSlogan = slogans?.data[0]?.attributes;
+  const title = page?.name;
   const metadata = {
-    title: name,
-    description,
-    image: imgUrl,
+    title,
+    description: page?.description,
+    image: '',
   };
 
   return (
     <Layout metadata={metadata}>
       <Head>
-        <title>{name}</title>
-        <meta
-          name='description'
-          content='Nextly is a free landing page template built with next.js & Tailwind CSS'
-        />
-        <link rel='icon' href='/favicon.ico' />
+        <title>{title}</title>
       </Head>
 
-      <Navbar title={name} />
-
       {/* TODO hero + slogans + what we serve*/}
-      <Hero img={heroImg} slogan={mainSlogan} />
+      <Hero hero={hero} />
 
       {/* TODO our story section */}
       <OurStory />
@@ -66,7 +51,7 @@ export default function Home({ data }) {
       <OurStrength />
 
       {/* FAQ section */}
-      <Faq />
+      {/* <Faq /> */}
 
       <Address />
 
@@ -76,21 +61,59 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(
-    'https://strapi-e35o.onrender.com/api/aroma-restaurant?populate=*'
+  const pageRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API + '?populate=*'
   );
-  const aroma_data = await res.json();
+  const menuItemsRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API +
+      '?populate[0]=menu_items.price.currencies'
+  );
+  const hero_res = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API +
+      '?populate[0]=hero&populate[1]=hero.img&populate[2]=hero.content'
+  );
+  const weOfferRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API +
+      '?populate[0]=we_offer_service_item.featured_img.data.attributes.url&populate[1]=we_offer_service'
+  );
 
-  if (aroma_data) {
+  const ourStrengthRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API + '?populate[0]=service_item.featured_img'
+  );
+
+  const aroma_data = await pageRes.json();
+  const menuItems = await menuItemsRes.json();
+  const hero = await hero_res.json();
+  const weOffer = await weOfferRes.json();
+  const ourStrength = await ourStrengthRes.json();
+
+  if (
+    aroma_data?.data?.attributes &&
+    hero?.data?.attributes?.hero &&
+    menuItems?.data?.attributes?.menu_items &&
+    weOffer?.data?.attributes?.we_offer_service_item &&
+    ourStrength?.data?.attributes?.service_item
+  ) {
     return {
       props: {
-        data: aroma_data,
+        page: aroma_data?.data?.attributes,
+        menu: {
+          title: aroma_data?.data?.attributes?.menu_items_title,
+          items: menuItems?.data?.attributes?.menu_items,
+        },
+        hero: hero?.data?.attributes?.hero,
+        ourStrength: {
+          title: aroma_data?.data?.attributes?.our_story_title,
+          cards: ourStrength?.data?.attributes?.service_item,
+        },
+        weOffer: {
+          title: aroma_data?.data?.attributes?.we_offer_service,
+          services: weOffer?.data?.attributes?.we_offer_service_item,
+        },
       }, // will be passed to the page component as props
     };
   }
   return {
-    props: {
-      data: {},
-    }, // will be passed to the page component as props
+    notFound: true,
   };
 }
