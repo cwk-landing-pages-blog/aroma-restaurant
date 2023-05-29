@@ -1,10 +1,11 @@
-.hero_content{
-  img{
+.hero_content {
+  img {
     width: 100%;
     height: 90vh;
+    object-fit: cover;
   }
 
-  .content{
+  .content {
     position: absolute;
     top: 40%;
     left: 0;
@@ -15,23 +16,33 @@
     justify-content: center;
     align-items: center;
     color: white;
-    border:1px solid red;
+    border: 1px solid red;
     width: 100%;
 
-    &_title{
+    &_title {
       text-transform: uppercase;
     }
-    &_divider{
+    &_divider {
       text-transform: uppercase;
     }
-    &_subtitle{
+    &_subtitle {
       text-transform: uppercase;
     }
-    &_desc{
+    &_desc {
       text-transform: uppercase;
     }
-    &_btn{
-      
+    &_btn {
     }
+  }
+}
+.rombWrap {
+  position: relative;
+
+  .romb {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    transform: rotate(45%);
+    border: 1px solid white;
   }
 }

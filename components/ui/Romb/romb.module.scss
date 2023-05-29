@@ -1,0 +1,21 @@
+.rombWrap {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row; 
+  gap: 8px;
+
+  .romb {
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    border: 1px solid #e4c590;
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+  .children{
+    margin-left: 14px;
+  }
+}

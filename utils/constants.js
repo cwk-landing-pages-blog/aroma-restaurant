@@ -25,6 +25,7 @@ export const homeCategory = [
 export const headerContacts = {
   address: '17 Burgh Road, Skegness, United Kingdom',
   googleMapLocation: 'https://goo.gl/maps/x294RwQG93CbwLB79',
-  openHours: 'Daily from 5:00 AM  to 10:30 PM',
+  email: 'aroma@email.com',
+  openHours: 'Daily from 5:00 PM  to 10:30 PM',
   tel: '+441754761122',
 };
