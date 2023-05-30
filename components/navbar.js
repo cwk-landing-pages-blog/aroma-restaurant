@@ -7,6 +7,7 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { MdLocationPin } from 'react-icons/md';
 import { GiSunflower } from 'react-icons/gi';
 import { BsClockHistory } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 
 export default function Navbar({ title }) {
   const navigation = [
@@ -28,15 +29,42 @@ export default function Navbar({ title }) {
     },
   ];
 
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled, setScrolled]);
+
   // TODO better navbar with the new header for more quick infos and actions
   return (
-    <div className='w-full'>
-      <div className='hidden container md:flex relative flex-wrap text-white items-center justify-between p-2 mx-auto lg:justify-between xl:px-0'>
+    <div
+      className={`${
+        scrolled ? 'bg-gray-900 pb-1' : ''
+      } w-full fixed top-0 z-20`}
+    >
+      <div
+        className={
+          `${scrolled ? 'bg-slate-800 w-full ' : ''} ` +
+          'hidden px-8 md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
+        }
+      >
         <div className='w-full flex justify-between gap-4'>
           <Link
             target='_blank'
             href={headerContacts.googleMapLocation}
-            className='flex justify-center gap-2 items-center text-gray-400 text-sm hover:cursor-pointer '
+            className='flex justify-center gap-2 items-center text-gray-400 text-base hover:cursor-pointer '
           >
             <MdLocationPin className='text-red-800 text-xl leading-6' />
             <span className='border-b border-transparent hover:border-b hover:border-gold-400'>
@@ -59,7 +87,7 @@ export default function Navbar({ title }) {
           </div>
         </div>
       </div>
-      <nav className='w-full container relative flex flex-wrap items-center justify-start p-2 px-8 mx-auto lg:justify-center xl:px-0'>
+      <nav className='w-full container relative flex flex-wrap items-center justify-start px-8 mx-auto lg:justify-center xl:px-0'>
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
@@ -160,12 +188,12 @@ export default function Navbar({ title }) {
 
         {/* menu  */}
         <div className='hidden bg-transparent text-center lg:flex lg:items-center sticky'>
-          <ul className='items-center justify-center pt-2 list-none lg:pt-0 lg:flex'>
+          <ul className='items-center justify-center  list-none lg:pt-0 lg:flex'>
             {navigation.slice(0, 2).map((menu) => (
               <li className='mr-3 nav__item' key={menu.key}>
                 <Link
                   href={`/#${menu.key}`}
-                  className='inline-block px-4 py-2 text-lg font-normal min-w-[110px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
+                  className='inline-block px-4 py-1 text-xl font-normal min-w-[110px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
                 >
                   {menu.name}
                 </Link>
@@ -174,14 +202,14 @@ export default function Navbar({ title }) {
 
             <Link
               href='/'
-              className='flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100'
+              className='flex items-center space-x-2 text-xl font-medium text-indigo-500 dark:text-gray-100'
             >
               <Image
                 src='/icons/restaurant.png'
                 alt='A'
-                width='32'
-                height='32'
-                className='w-8'
+                width='24'
+                height='24'
+                className='w-6'
               />
               <h1 className='header_title'>{title}</h1>
             </Link>
@@ -190,7 +218,7 @@ export default function Navbar({ title }) {
               <li className='mr-3 nav__item' key={menu.key}>
                 <Link
                   href={`/#${menu.key}`}
-                  className='inline-block px-4 py-2 text-lg font-normal min-w-[120px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
+                  className='inline-block px-4 py-1 text-xl font-normal min-w-[120px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
                 >
                   {menu.name}
                 </Link>

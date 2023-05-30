@@ -12,9 +12,10 @@ import Hero from '@/components/home/Hero';
 import Testimonials from '@/components/home/Testimonials';
 import Faq from '@/components/home/Faq';
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
+import WeOffer from '@/components/home/WeOffer';
 
 export default function Home({ page, hero, weOffer, ourStrength, menu }) {
-  console.log({ page, hero, weOffer, ourStrength, menu });
+  // console.log({ page, hero, weOffer, ourStrength, menu });
 
   const title = page?.name;
   const metadata = {
@@ -32,6 +33,8 @@ export default function Home({ page, hero, weOffer, ourStrength, menu }) {
       {/* TODO hero + slogans + what we serve*/}
       <Hero hero={hero} />
 
+      {/* weOffer */}
+      <WeOffer {...weOffer} />
       {/* TODO our story section */}
       <OurStory />
 
