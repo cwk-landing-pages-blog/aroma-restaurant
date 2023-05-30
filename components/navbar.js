@@ -8,6 +8,8 @@ import { MdLocationPin } from 'react-icons/md';
 import { GiSunflower } from 'react-icons/gi';
 import { BsClockHistory } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
+import BgLeaves from './ui/backgrounds/BgLeaves';
+import BgBiber from './ui/backgrounds/BgBiber';
 
 export default function Navbar({ title }) {
   const navigation = [
@@ -49,15 +51,11 @@ export default function Navbar({ title }) {
 
   // TODO better navbar with the new header for more quick infos and actions
   return (
-    <div
-      className={`${
-        scrolled ? 'bg-zinc-800 pb-1' : ''
-      } w-full fixed top-0 z-20`}
-    >
+    <div className={`${scrolled ? 'bg-zinc-800' : ''} w-full fixed top-0 z-20`}>
       <div
         className={
           `${scrolled ? 'bg-black w-full ' : ''} ` +
-          'hidden px-8 md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
+          'hidden px-0 sm:px-8  bg-black  md:bg-transparent md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
         }
       >
         <div className='w-full flex justify-between gap-4'>
@@ -87,12 +85,12 @@ export default function Navbar({ title }) {
           </div>
         </div>
       </div>
-      <nav className='w-full container relative flex flex-wrap items-center justify-start px-8 mx-auto lg:justify-center xl:px-0'>
+      <nav className='w-full bg-black md:bg-transparent  container relative flex flex-wrap items-center justify-start px-8 mx-auto lg:justify-center xl:px-0'>
         {/* Logo  */}
         <Disclosure>
           {({ open }) => (
             <>
-              <div className='flex flex-wrap items-center justify-between w-full lg:w-auto'>
+              <div className='z-10 flex flex-wrap items-center justify-between w-full py-1 lg:w-auto'>
                 <Link
                   href='/'
                   className='lg:hidden flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100'
@@ -109,7 +107,7 @@ export default function Navbar({ title }) {
 
                 <Disclosure.Button
                   aria-label='Toggle Menu'
-                  className='px-2 py-1 ml-auto text-yellow-500 rounded-md lg:hidden hover:text-yellow-700 focus:outline-dotted'
+                  className='px-2  ml-auto text-yellow-500 rounded-md lg:hidden hover:text-yellow-700'
                 >
                   <svg
                     className='w-6 h-6 fill-current'
@@ -133,7 +131,7 @@ export default function Navbar({ title }) {
                 </Disclosure.Button>
 
                 <Disclosure.Panel className='flex flex-wrap w-full my-5 lg:hidden'>
-                  <div className='flex flex-col w-full'>
+                  <div className='flex flex-col w-full border-b-2 border-gold-400 border-double'>
                     {navigation.map((item) => (
                       <Link
                         key={item.key}
@@ -179,6 +177,8 @@ export default function Navbar({ title }) {
                         </Link>
                       </div>
                     </div>
+                    <BgBiber />
+                    <BgLeaves />
                   </div>
                 </Disclosure.Panel>
               </div>
