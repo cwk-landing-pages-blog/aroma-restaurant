@@ -15,7 +15,7 @@ import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
 
 export default function Home({ page, hero, weOffer, ourStrength, menu }) {
-  // console.log({ page, hero, weOffer, ourStrength, menu });
+  console.log({ page, hero, weOffer, ourStrength, menu });
 
   const title = page?.name;
   const metadata = {
@@ -36,7 +36,10 @@ export default function Home({ page, hero, weOffer, ourStrength, menu }) {
       {/* weOffer */}
       <WeOffer {...weOffer} />
       {/* TODO our story section */}
-      <OurStory />
+      <OurStory
+        img={page.our_story_img.data.attributes}
+        title={page.our_story_title}
+      />
 
       {/* Special Dish, featured dish comes along with the info that as The Meal of the dat */}
       <SpecialDish />

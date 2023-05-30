@@ -51,12 +51,12 @@ export default function Navbar({ title }) {
   return (
     <div
       className={`${
-        scrolled ? 'bg-gray-900 pb-1' : ''
+        scrolled ? 'bg-zinc-800 pb-1' : ''
       } w-full fixed top-0 z-20`}
     >
       <div
         className={
-          `${scrolled ? 'bg-slate-800 w-full ' : ''} ` +
+          `${scrolled ? 'bg-black w-full ' : ''} ` +
           'hidden px-8 md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
         }
       >

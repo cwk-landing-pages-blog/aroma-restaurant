@@ -1,13 +1,12 @@
 import React from 'react';
-import TitleSection from '../ui/TitleSecton';
+import TitleSection from '../ui/TitleSection';
 import ServiceCard from '../ui/ServiceCard';
 import BgLeaves from '../ui/backgrounds/BgLeaves';
 import BgTomato from '../ui/backgrounds/BgTomato';
 
 const WeOffer = ({ title, services }) => {
-  console.log({ title, services });
   return (
-    <div className='my-8 relative z-0'>
+    <div className='py-8 relative z-0 bg-black'>
       <TitleSection
         title={title.title}
         hasDivider={title.hasDivider}

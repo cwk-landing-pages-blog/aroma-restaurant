@@ -6,7 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Link from 'next/link';
 import cutlery from '../../public/icons/cutlery-out.png';
-import TitleSection from '../ui/TitleSecton';
+import TitleSection from '../ui/TitleSection';
+import call from '@/assets/icons/call.png'
+import { headerContacts } from '@/utils/constants';
+
 
 export default function Hero({ hero }) {
   return (
@@ -18,7 +21,6 @@ export default function Hero({ hero }) {
         onSwiper={(swiper) => console.log(swiper)}
       >
         {hero.map((item) => {
-          console.log('🚀 ~ file: Hero.js:21 ~ {hero.map ~ item:', item);
           const imgUrl =
             process.env.NEXT_PUBLIC_RENDER_URL +
             item?.img?.data?.attributes?.url;
@@ -34,7 +36,6 @@ export default function Hero({ hero }) {
                 />
 
                 <section className='content absolute lg:top-1/4 top-48'>
-                  
                   <TitleSection
                     title={item.content.title}
                     subtitle={item.content.subtitle}
@@ -43,7 +44,7 @@ export default function Hero({ hero }) {
                   >
                     <Link
                       href={item.content.cta_href}
-                      className='content_btn text-gold-400 text-xl flex gap-4'
+                      className='content_btn text-gold-400 text-xl flex gap-4 '
                     >
                       <Image
                         src={cutlery}
@@ -59,6 +60,22 @@ export default function Hero({ hero }) {
                           Now
                         </p>
                       </div>
+                    </Link>
+
+                    <Link href={`tel:${headerContacts.tel}`} className='pt-16 text-center flex justify-center flex-col items-center'>
+                      <h3 className='text-white text-2xl text-center pb-2'>
+                        Booking is one call away
+                      </h3>
+                      <p className='text-gold-400 text-xl text-center flex gap-3 tracking-wider'>
+                        <Image
+                          className='animate-pulse'
+                          src={call}
+                          width={32}
+                          height={32}
+                          alt={`call restaurant to book, tel ${headerContacts.tel}`}
+                        />{' '}
+                        {headerContacts.tel}
+                      </p>
                     </Link>
                   </TitleSection>
                 </section>
