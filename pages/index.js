@@ -14,9 +14,15 @@ import Faq from '@/components/home/Faq';
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
 
-export default function Home({ page, hero, weOffer, ourStrength, menu }) {
-  console.log({ page, hero, weOffer, ourStrength, menu });
-
+export default function Home({
+  page,
+  hero,
+  weOffer,
+  ourStrength,
+  menu,
+  specialDish,
+  socialNetworks,
+}) {
   const title = page?.name;
   const metadata = {
     title,
@@ -43,29 +49,29 @@ export default function Home({ page, hero, weOffer, ourStrength, menu }) {
 
       {/* Special Dish, featured dish comes along with the info that as The Meal of the dat */}
       {/* TODO ask for details */}
-      <SpecialDish
-        title={page?.special_dish_title}
-        img={page?.special_dish_img?.data?.attributes}
-      />
+      <SpecialDish title={specialDish} />
 
       {/* tab menu for each category main ones */}
       <RestaurantMenu {...menu} />
 
       {/* featured carousel menu items */}
-      <FeaturedMenu />
+      {/* <FeaturedMenu /> */}
 
       {/* Testimonials */}
-      <Testimonials />
+      {/* <Testimonials /> */}
 
       {/* Our strength section */}
-      <OurStrength />
+      {/* <OurStrength /> */}
 
       {/* FAQ section */}
       {/* <Faq /> */}
 
-      <Address />
+      <Address
+        address={page?.google_map_location?.data?.attributes}
+        contact={socialNetworks}
+      />
 
-      <Footer />
+      <Footer contact={socialNetworks} />
     </Layout>
   );
 }
@@ -76,7 +82,7 @@ export async function getStaticProps(context) {
   );
   const menuItemsRes = await fetch(
     process.env.NEXT_PUBLIC_AROMA_API +
-      '?populate[0]=menu_items.price.currencies'
+      '?populate[0]=menu_items.price.currencies&populate[1]=menu_items.card_img'
   );
   const hero_res = await fetch(
     process.env.NEXT_PUBLIC_AROMA_API +
@@ -90,19 +96,29 @@ export async function getStaticProps(context) {
   const ourStrengthRes = await fetch(
     process.env.NEXT_PUBLIC_AROMA_API + '?populate[0]=service_item.featured_img'
   );
-
+  const specialDishRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API +
+      '?populate[0]=special_dish_title.price&populate[1]=special_dish_title.img'
+  );
+  const socialNetworksRes = await fetch(
+    process.env.NEXT_PUBLIC_AROMA_API + '?populate[0]=social_networks.icon'
+  );
   const aroma_data = await pageRes.json();
   const menuItems = await menuItemsRes.json();
   const hero = await hero_res.json();
   const weOffer = await weOfferRes.json();
   const ourStrength = await ourStrengthRes.json();
+  const specialDish = await specialDishRes.json();
+  const socialNetworks = await socialNetworksRes.json();
 
   if (
     aroma_data?.data?.attributes &&
     hero?.data?.attributes?.hero &&
     menuItems?.data?.attributes?.menu_items &&
     weOffer?.data?.attributes?.we_offer_service_item &&
-    ourStrength?.data?.attributes?.service_item
+    ourStrength?.data?.attributes?.service_item &&
+    specialDish?.data?.attributes?.special_dish_title &&
+    socialNetworks?.data?.attributes?.social_networks
   ) {
     return {
       props: {
@@ -120,6 +136,8 @@ export async function getStaticProps(context) {
           title: aroma_data?.data?.attributes?.we_offer_service,
           services: weOffer?.data?.attributes?.we_offer_service_item,
         },
+        specialDish: specialDish?.data?.attributes?.special_dish_title,
+        socialNetworks: socialNetworks?.data?.attributes?.social_networks,
       }, // will be passed to the page component as props
     };
   }

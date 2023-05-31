@@ -6,7 +6,7 @@ import BgTomato from '../ui/backgrounds/BgTomato';
 
 const WeOffer = ({ title, services }) => {
   return (
-    <div className='py-8 relative z-0 bg-black'>
+    <div id='services' className='py-8 relative z-0 bg-black'>
       <TitleSection
         title={title.title}
         hasDivider={title.hasDivider}

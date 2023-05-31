@@ -77,10 +77,12 @@ export default function Navbar({ title }) {
 
           <div>
             <Link
-              className='text-sm flex justify-center gap-2 items-center tracking-tight text-gold-400'
+              className='text-base font-bold flex justify-center gap-2 items-center tracking-wide text-gold-400'
               href={`tel:${headerContacts.tel}`}
+              title=' Call Now! '
             >
-              <FaPhoneAlt /> {headerContacts.tel}
+              <FaPhoneAlt className='text-xl animate-pulse' />{' '}
+              {headerContacts.tel}
             </Link>
           </div>
         </div>
@@ -88,7 +90,7 @@ export default function Navbar({ title }) {
       <nav className='w-full bg-black md:bg-transparent  container relative flex flex-wrap items-center justify-start px-8 mx-auto lg:justify-center xl:px-0'>
         {/* Logo  */}
         <Disclosure>
-          {({ open }) => (
+          {({ open, close }) => (
             <>
               <div className='z-10 flex flex-wrap items-center justify-between w-full py-1 lg:w-auto'>
                 <Link
@@ -137,6 +139,7 @@ export default function Navbar({ title }) {
                         key={item.key}
                         href={`/#${item.key}`}
                         className='w-full  px-4 py-2  -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
+                        onClick={() => close()}
                       >
                         <Romb>{item.name}</Romb>
                       </Link>

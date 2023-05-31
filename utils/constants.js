@@ -19,7 +19,7 @@ export const homeCategory = [
   { key: 'starters', name: 'Starters' },
   { key: 'pizza', name: 'Pizza' },
   { key: 'dine-in', name: 'Dine In' },
-  { key: 'drinks', name: 'Drinks' },
+  { key: 'pasta', name: 'Pasta' },
 ];
 
 export const headerContacts = {

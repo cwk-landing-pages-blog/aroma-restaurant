@@ -13,7 +13,7 @@ const OurStory = ({ img, title }) => {
   const imgUrl = getImgUrl(img.url);
 
   return (
-    <div className='bg-zinc-900 gap-8 w-full mx-auto py-8 relative z-0 flex flex-col items-center justify-center md:flex-row'>
+    <div id='about' className='bg-zinc-900 gap-8 w-full mx-auto py-8 relative z-0 flex flex-col items-center justify-center md:flex-row'>
       <div className='flex flex-col items-center justify-start gap-8'>
         <TitleSection
           title={title.title}
@@ -42,12 +42,12 @@ const OurStory = ({ img, title }) => {
           </p>
         </Link>
 
-        <Link
+        {/* <Link
           className='px-4  py-3 border border-gold-400 text-gold-400 rounded-md text-xl hover:bg-zinc-600 hover:font-bold'
           href='/about'
         >
           Read More
-        </Link>
+        </Link> */}
       </div>
       <div className='relative'>
         <Image

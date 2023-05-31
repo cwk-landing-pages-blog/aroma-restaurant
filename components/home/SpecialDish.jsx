@@ -9,8 +9,9 @@ import ExternalLink from '../ExternalLink';
 import BgBiber from '../ui/backgrounds/BgBiber';
 import { aromaSocials } from '@/utils/constants';
 
-const SpecialDish = ({ title, img }) => {
-  const imgUrl = getImgUrl(img.url);
+const SpecialDish = ({ title }) => {
+  const imgUrl = getImgUrl(title?.img?.data?.attributes?.url);
+  const price = title?.price
 
   return (
     <section className='flex flex-col md:flex-row w-full justify-center md:justify-evenly items-center p-2 md:p-16'>

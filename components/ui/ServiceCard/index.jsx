@@ -20,9 +20,10 @@ const ServiceCard = ({ img, title, link }) => {
       <h2 className='my-4 text-white text-2xl md:text-3xl font-semibold text-center'>
         {title}
       </h2>
-      <Link href={link} className='text-gold-400 text-xl border-b-2 hover:border-gold-400 border-b-transparent'>
+      {/* if he asks for more details */}
+      {/* <Link href={link} className='text-gold-400 text-xl border-b-2 hover:border-gold-400 border-b-transparent'>
         View All
-      </Link>
+      </Link> */}
     </div>
   );
 };
