@@ -42,10 +42,14 @@ export default function Home({ page, hero, weOffer, ourStrength, menu }) {
       />
 
       {/* Special Dish, featured dish comes along with the info that as The Meal of the dat */}
-      <SpecialDish />
+      {/* TODO ask for details */}
+      <SpecialDish
+        title={page?.special_dish_title}
+        img={page?.special_dish_img?.data?.attributes}
+      />
 
       {/* tab menu for each category main ones */}
-      <RestaurantMenu />
+      <RestaurantMenu {...menu} />
 
       {/* featured carousel menu items */}
       <FeaturedMenu />

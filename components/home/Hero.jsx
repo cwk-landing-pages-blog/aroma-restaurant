@@ -17,8 +17,8 @@ export default function Hero({ hero }) {
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={(props) => console.log('slide change', props)}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={(props) => console.log('slide change', props)}
+        // onSwiper={(swiper) => console.log(swiper)}
       >
         {hero.map((item) => {
           const imgUrl =

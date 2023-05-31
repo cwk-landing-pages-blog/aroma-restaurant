@@ -6,7 +6,6 @@ import { getImgUrl } from '@/utils/getImgUrl';
 import Link from 'next/link';
 
 const ServiceCard = ({ img, title, link }) => {
-  console.log({ img, title, link });
   const imgAlt = img.alternativeText + 'service image';
   const imgUrl = getImgUrl(img.url);
 

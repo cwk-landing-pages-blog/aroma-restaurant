@@ -29,3 +29,8 @@ export const headerContacts = {
   openHours: 'Daily from 5:00 PM  to 10:30 PM',
   tel: '+441754761122',
 };
+
+export const aromaSocials = {
+  instagram: 'https://www.instagram.com/aroma_italian_restaurant_/',
+  facebook: 'https://www.facebook.com/mariosskegness',
+};

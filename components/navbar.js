@@ -54,8 +54,8 @@ export default function Navbar({ title }) {
     <div className={`${scrolled ? 'bg-zinc-800' : ''} w-full fixed top-0 z-20`}>
       <div
         className={
-          `${scrolled ? 'bg-black w-full ' : ''} ` +
-          'hidden px-0 sm:px-8  bg-black  md:bg-transparent md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
+          `${scrolled ? 'bg-black w-full ' : 'md:bg-transparent'} ` +
+          'hidden px-0 sm:px-8  bg-black   md:flex relative flex-wrap text-white items-center justify-between py-2 mx-auto lg:justify-between xl:px-32'
         }
       >
         <div className='w-full flex justify-between gap-4'>
