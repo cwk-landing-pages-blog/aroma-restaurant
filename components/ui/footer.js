@@ -13,7 +13,7 @@ export default function Footer({ contact }) {
   return (
     <div className='relative z-20'>
       <>
-        <div className='pt-8 max-w-screen-xl flex flex-col justify-center items-center gap-10'>
+        <div className='pt-8 flex flex-col justify-center items-center gap-10'>
           <div className='lg:col-span-2'>
             <Link
               href='/'
