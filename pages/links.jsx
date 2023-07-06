@@ -133,12 +133,6 @@ const links = ({ isError, data }) => {
       <Head>
         <title>Links - Aroma Restaurant</title>
         <meta name='title' content={'Links - Aroma Italian Restaurant'} />
-        <meta
-          name='description'
-          content={
-            'Serving Traditional Italian Delights in a Welcoming Atmosphere.'
-          }
-        />
         <meta property='og:type' content={'website'} />
         <meta property='og:title' content='Aroma Italian Restaurant' />
         <meta
