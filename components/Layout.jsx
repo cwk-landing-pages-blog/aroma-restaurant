@@ -12,7 +12,7 @@ const Layout = ({ metadata, children }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <div className='overflow-x-hidden'>
-      <Navbar title={'Aroma'} />
+      <Navbar title={'Aroma Restaurant'} />
 
       {children}
       </div>

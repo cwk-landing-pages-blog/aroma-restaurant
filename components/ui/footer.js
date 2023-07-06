@@ -11,7 +11,6 @@ import { BsFacebook } from 'react-icons/bs';
 
 export default function Footer({ socials }) {
   const getSocial = (item) => {
-    console.log('🚀 ~ file: footer.js:14 ~ getSocial ~ item:', item);
     switch (item.name) {
       case 'instagram':
         return (

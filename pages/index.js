@@ -27,7 +27,7 @@ export default function Home({ data }) {
       </Layout>
     );
   }
-  console.log('🚀 ~ file: index.js:18 ~ Home ~ data:', data?.data?.attributes);
+  // console.log('🚀 ~ file: index.js:18 ~ Home ~ data:', data?.data?.attributes);
 
   const {
     heros,

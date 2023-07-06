@@ -3,7 +3,7 @@ export const menuCategory = [
   { key: 'bread', name: 'Bread' },
   { key: 'steaks', name: 'Steaks' },
   { key: 'sauces', name: 'Sauces' },
-  { key: 'risotto', name: 'Risotto' },
+  { key: 'rissotto', name: 'Risotto' },
   { key: 'pizza', name: 'Pizza' },
   { key: 'al_forne', name: 'Al Forne' },
   { key: 'chicken_dishes', name: 'Chicken Dishes' },
@@ -24,6 +24,7 @@ export const homeCategory = [
 
 export const headerContacts = {
   address: '17 Burgh Road, Skegness, United Kingdom',
+  addressShort: 'Get Directions from Maps',
   googleMapLocation: 'https://goo.gl/maps/x294RwQG93CbwLB79',
   email: 'aroma.restaurant2023@gmail.com',
   openHours: 'Daily from 5:00 PM  to 10:30 PM',
