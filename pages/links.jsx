@@ -4,7 +4,7 @@ import BgBiber from '@/components/ui/backgrounds/BgBiber';
 import BgFull from '@/components/ui/backgrounds/BgFull';
 import BgLeaves from '@/components/ui/backgrounds/BgLeaves';
 import { getLinksPageData } from '@/utils/api';
-import { headerContacts } from '@/utils/constants';
+import { headerContacts, s3BucketsImgUrl } from '@/utils/constants';
 import { getIcon } from '@/utils/getIcon';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -109,7 +109,6 @@ const links = ({ isError, data }) => {
               />
 
               {/* social networks */}
-             
             </section>
 
             <footer className='fixed bottom-0 flex justify-center p-4 z-40'>
@@ -129,12 +128,28 @@ const links = ({ isError, data }) => {
   }
 
   const { special_section, social_networks } = data?.data?.attributes;
-  console.log('🚀 ~ file: links.jsx:54 ~ links ~ menu_items:', special_section);
   return (
     <>
       <Head>
         <title>Links - Aroma Restaurant</title>
-        <meta property='og:image' content={avatarUrl} />
+        <meta name='title' content={'Links - Aroma Italian Restaurant'} />
+        <meta
+          name='description'
+          content={
+            'Serving Traditional Italian Delights in a Welcoming Atmosphere.'
+          }
+        />
+        <meta property='og:type' content={'website'} />
+        <meta property='og:title' content='Aroma Italian Restaurant' />
+        <meta
+          property='og:description'
+          content={
+            'Serving Traditional Italian Delights in a Welcoming Atmosphere'
+          }
+        />
+        <meta property='og:image' content={s3BucketsImgUrl.avatar} />
+        <meta property='og:url' content={s3BucketsImgUrl.url} />
+        <meta property='og:site_name' content={'Links - Aroma Italian Restaurant'} />
       </Head>
       <div className='relative overflow-x-hidden z-10  h-screen flex flex-col items-center justify-start'>
         {/* header */}

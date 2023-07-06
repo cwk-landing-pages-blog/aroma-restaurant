@@ -10,6 +10,7 @@ import { BsClockHistory } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import BgLeaves from './ui/backgrounds/BgLeaves';
 import BgBiber from './ui/backgrounds/BgBiber';
+import { SiLinktree } from 'react-icons/si';
 
 export default function Navbar({ title }) {
   const navigation = [
@@ -135,7 +136,7 @@ export default function Navbar({ title }) {
 
                 {/* on responsive collapsed menu links and info */}
                 <Disclosure.Panel className='flex flex-wrap w-full my-5 lg:hidden'>
-                  <div className='flex flex-col w-full border-b-2 border-gold-400 border-double'>
+                  <div className='flex flex-col w-full border-b-2 overflow-scroll border-gold-400 border-double'>
                     <Link
                       href='/'
                       className='w-full  px-4 py-2 font-bold -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
@@ -155,7 +156,7 @@ export default function Navbar({ title }) {
                       </Link>
                     ))}
 
-                    <div className='mt-8 text-center z-50'>
+                    <div className='mt-8 text-center z-50 overflow-scroll'>
                       <h1 className='text-white font-semibold text-3xl mb-4'>
                         Visit Us
                       </h1>
@@ -190,6 +191,12 @@ export default function Navbar({ title }) {
                           <FaPhoneAlt /> {headerContacts.tel}
                         </Link>
                       </div>
+                      <Link href={'/links'} className='flex gap-1 items-center'>
+                        <p className='text-green-400 text-lg'>
+                          Aroma Restaurant Tree
+                        </p>
+                        <SiLinktree className='text-green-800' />
+                      </Link>
                     </div>
                     <BgBiber />
                     <BgLeaves />

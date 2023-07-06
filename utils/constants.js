@@ -35,3 +35,10 @@ export const aromaSocials = {
   instagram: 'https://www.instagram.com/aroma_italian_restaurant_/',
   facebook: 'https://www.facebook.com/mariosskegness',
 };
+
+export const s3BucketsImgUrl = {
+  home: 'https://strapi-cwk.s3.eu-south-1.amazonaws.com/spageti_01653c3bc8.jpg',
+  avatar:
+    'https://strapi-cwk.s3.eu-south-1.amazonaws.com/avatar_db6c72102a.jpg',
+  url: 'https://aroma-restaurant.netlify.app/',
+};

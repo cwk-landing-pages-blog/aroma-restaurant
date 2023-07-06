@@ -15,6 +15,7 @@ import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
 import { getAllPageData } from '@/utils/api';
 import avatarUrl from '@/assets/imgs/avatar.jpg';
+import { s3BucketsImgUrl } from '@/utils/constants';
 
 export default function Home({ data }) {
   const title = 'Aroma Restaurant';
@@ -40,12 +41,13 @@ export default function Home({ data }) {
     menu_title,
     google_map_location,
     social_networks,
+    description,
   } = data?.data?.attributes;
 
   const metadata = {
     title,
-    description: 'page?.description',
-    image: avatarUrl,
+    description,
+    image: s3BucketsImgUrl.home,
   };
 
   return (

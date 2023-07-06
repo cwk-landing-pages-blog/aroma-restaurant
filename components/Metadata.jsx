@@ -4,7 +4,7 @@ import { version } from '../package.json';
 
 const Metadata = ({
   title = 'Aroma Restaurant',
-  image = '',
+  image = 'https://strapi-cwk.s3.eu-south-1.amazonaws.com/spageti_01653c3bc8.jpg',
   description = 'Landing Page for Aroma italian restaurant',
   author = 'kolpaja',
   copyright = 'codewithkoli',
