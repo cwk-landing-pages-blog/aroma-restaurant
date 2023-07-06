@@ -5,9 +5,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'strapi-e35o.onrender.com',
+        hostname: 'strapi-cwk.s3.eu-south-1.amazonaws.com',
         port: '',
-        pathname: '/uploads/**',
+        pathname: '/**',
       },
     ],
   },

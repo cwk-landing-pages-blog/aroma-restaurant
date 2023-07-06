@@ -18,15 +18,15 @@ export default function Navbar({ title }) {
       name: 'Menu',
     },
     {
-      key: 'services',
+      key: '#services',
       name: 'Services',
     },
     {
-      key: 'about',
+      key: '#about',
       name: 'About',
     },
     {
-      key: 'find-us',
+      key: '#find-us',
       name: 'Find Us',
     },
   ];
@@ -137,14 +137,14 @@ export default function Navbar({ title }) {
                     {navigation.map((item) => (
                       <Link
                         key={item.key}
-                        href={`/#${item.key}`}
-                        className='w-full  px-4 py-2  -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
+                        href={`/${item.key}`}
+                        className='w-full  px-4 py-2 font-bold -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
                         onClick={() => close()}
                       >
                         <Romb>{item.name}</Romb>
                       </Link>
                     ))}
-                    <div className='mt-8 text-center'>
+                    <div className='mt-8 text-center z-20'>
                       <h1 className='text-white font-semibold text-3xl mb-4'>
                         Visit Us
                       </h1>
@@ -195,7 +195,7 @@ export default function Navbar({ title }) {
             {navigation.slice(0, 2).map((menu) => (
               <li className='mr-3 nav__item' key={menu.key}>
                 <Link
-                  href={`/#${menu.key}`}
+                  href={`/${menu.key}`}
                   className='inline-block px-4 py-1 text-xl font-normal min-w-[110px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
                 >
                   {menu.name}
@@ -220,7 +220,7 @@ export default function Navbar({ title }) {
             {navigation.slice(2, navigation.length).map((menu) => (
               <li className='mr-3 nav__item' key={menu.key}>
                 <Link
-                  href={`/#${menu.key}`}
+                  href={`/${menu.key}`}
                   className='inline-block px-4 py-1 text-xl font-normal min-w-[120px] text-gold-400 no-underline rounded-md  hover:text-yellow-700 focus:text-yellow-500 focus:underline focus:underline-offset-3'
                 >
                   {menu.name}

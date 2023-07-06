@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import Link from 'next/link';
-import cutlery from '../../public/icons/cutlery-out.png';
 import TitleSection from '../ui/TitleSection';
 import call from '@/assets/icons/call.png'
 import { headerContacts } from '@/utils/constants';
@@ -20,49 +19,26 @@ export default function Hero({ hero }) {
         // onSlideChange={(props) => console.log('slide change', props)}
         // onSwiper={(swiper) => console.log(swiper)}
       >
-        {hero.map((item) => {
-          const imgUrl =
-            process.env.NEXT_PUBLIC_RENDER_URL +
-            item?.img?.data?.attributes?.url;
+        {hero?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
               <div className='hero_content'>
                 <Image
-                  src={imgUrl}
+                  src={item?.img?.data?.attributes?.url}
                   className='hero_img'
                   alt='Italian Pasta'
                   width={1600}
                   height={600}
                 />
 
-                <section className='content absolute lg:top-1/4 top-48'>
+                <section className='content absolute lg:top-1/4 top-48 px-2'>
                   <TitleSection
-                    title={item.content.title}
-                    subtitle={item.content.subtitle}
-                    hasDivider={item.content.hasDivider}
-                    description={item.content.description}
+                    title={item?.section?.title}
+                    subtitle={item?.section?.subtitle}
+                    hasDivider={item?.section?.hasDivider}
+                    description={item?.section?.description}
                   >
-                    <Link
-                      href={item.content.cta_href}
-                      className='content_btn text-gold-400 text-xl flex gap-4 '
-                    >
-                      <Image
-                        src={cutlery}
-                        width={65}
-                        height={50}
-                        alt='cutlery logo'
-                      />
-                      <div>
-                        <p className='text-2xl text-white font-bold font-serif text-center'>
-                          Order
-                        </p>
-                        <p className='text-xl text-white font-bold font-serif text-center'>
-                          Now
-                        </p>
-                      </div>
-                    </Link>
-
-                    <Link href={`tel:${headerContacts.tel}`} className='pt-16 text-center flex justify-center flex-col items-center'>
+                    <Link href={`tel:${headerContacts.tel}`} className='pt-20 text-center flex justify-center flex-col items-center'>
                       <h3 className='text-white text-2xl text-center pb-2'>
                         Booking is one call away
                       </h3>

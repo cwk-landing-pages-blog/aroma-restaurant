@@ -5,8 +5,9 @@ import BgTomato from '../ui/backgrounds/BgTomato';
 import Link from 'next/link';
 import { MdLocationPin } from 'react-icons/md';
 import { headerContacts } from '@/utils/constants';
+import styles from '@/styles/components/address.module.scss';
 
-const Address = ({ address, contact }) => {
+const Address = ({ address }) => {
   return (
     <div
       id='find-us'
@@ -15,7 +16,7 @@ const Address = ({ address, contact }) => {
       <TitleSection title='Find Us' hasDivider>
         <Link
           target='_blank'
-          href={headerContacts.googleMapLocation}
+          href={headerContacts.address}
           className='flex justify-center gap-2 items-center text-gray-400 text-base hover:cursor-pointer w-full'
         >
           <MdLocationPin className='text-red-800 text-4xl leading-6' />
@@ -27,12 +28,9 @@ const Address = ({ address, contact }) => {
 
       {/* google map */}
       <div
-        className='my-8 border shadow-gold-400 shadow-lg border-white rounded-md overflow-hidden max-w-sm sm:max-w-full'
+        className={`${styles.mapContainer} my-8 border shadow-gold-400 shadow-lg border-white rounded-md overflow-hidden`}
         dangerouslySetInnerHTML={{ __html: address.iframe_string }}
       />
-      {/* social networks */}
-      <div></div>
-
       <BgLeaves />
       <BgTomato />
     </div>
