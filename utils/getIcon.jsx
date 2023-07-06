@@ -4,7 +4,7 @@ import { MdVerified } from 'react-icons/md';
 
 const iconMap = {
   instagram : <AiFillInstagram />,
-  facebook : <AiFillInstagram />,
+  facebook : <BsFacebook />,
 }
 
 export const getIcon = (name) => name ? iconMap[name] : null

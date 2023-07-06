@@ -1,7 +1,7 @@
 // api fetch functions
 
 import axios from 'axios';
-import { qsAllPage, qsMenuPage } from './queryStrings';
+import { qsAllPage, qsLinksPage, qsMenuPage } from './queryStrings';
 
 const url =
   process.env.NEXT_PUBLIC_RAILWAY_API ||
@@ -15,4 +15,9 @@ export const getAllPageData = () =>
 export const getMenuPageData = () =>
   axios
     .get(`${url}?${qsMenuPage}`)
+    .catch((error) => console.log('getAllPageData', error));
+
+export const getLinksPageData = () =>
+  axios
+    .get(`${url}?${qsLinksPage}`)
     .catch((error) => console.log('getAllPageData', error));

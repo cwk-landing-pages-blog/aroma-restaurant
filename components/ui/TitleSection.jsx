@@ -6,10 +6,11 @@ const TitleSection = ({
   hasDivider,
   subtitle,
   description,
+  className,
   children,
 }) => {
   return (
-    <div className='flex flex-col gap-4 items-center'>
+    <div className={`${className} flex flex-col gap-4 items-center`}>
       {title ? (
         <h2 className='uppercase text-lg text-gold-400'>{title}</h2>
       ) : null}

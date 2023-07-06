@@ -67,3 +67,24 @@ export const qsMenuPage = qs.stringify(
     encodeValuesOnly: true, // prettify URL
   }
 );
+export const qsLinksPage = qs.stringify(
+  {
+    populate: {
+      menu_items: {
+        populate: ['img'],
+        filters: {
+          showOnLinkTree: {
+            $eq: true,
+          },
+        },
+      },
+      social_networks: true,
+      special_section: {
+        populate: ['section_img'],
+      },
+    },
+  },
+  {
+    encodeValuesOnly: true, // prettify URL
+  }
+);

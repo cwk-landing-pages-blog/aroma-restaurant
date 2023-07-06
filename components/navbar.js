@@ -51,7 +51,7 @@ export default function Navbar({ title }) {
 
   // TODO better navbar with the new header for more quick infos and actions
   return (
-    <div className={`${scrolled ? 'bg-zinc-800' : ''} w-full fixed top-0 z-20`}>
+    <div className={`${scrolled ? 'bg-zinc-800' : ''} w-full fixed top-0 z-50`}>
       <div
         className={
           `${scrolled ? 'bg-black w-full ' : 'md:bg-transparent'} ` +
@@ -92,7 +92,7 @@ export default function Navbar({ title }) {
         <Disclosure>
           {({ open, close }) => (
             <>
-              <div className='z-10 flex flex-wrap items-center justify-between w-full py-1 lg:w-auto'>
+              <div className='z-50 flex flex-wrap items-center justify-between w-full py-1 lg:w-auto'>
                 <Link
                   href='/'
                   className='lg:hidden flex items-center space-x-2 text-2xl font-medium text-indigo-500 dark:text-gray-100'
@@ -107,6 +107,7 @@ export default function Navbar({ title }) {
                   <h1 className='header_title'>{title}</h1>
                 </Link>
 
+                {/* hamburger button */}
                 <Disclosure.Button
                   aria-label='Toggle Menu'
                   className='px-2  ml-auto text-yellow-500 rounded-md lg:hidden hover:text-yellow-700'
@@ -132,8 +133,17 @@ export default function Navbar({ title }) {
                   </svg>
                 </Disclosure.Button>
 
+                {/* on responsive collapsed menu links and info */}
                 <Disclosure.Panel className='flex flex-wrap w-full my-5 lg:hidden'>
                   <div className='flex flex-col w-full border-b-2 border-gold-400 border-double'>
+                    <Link
+                      href='/'
+                      className='w-full  px-4 py-2 font-bold -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
+                      onClick={() => close()}
+                    >
+                      <Romb>Home</Romb>
+                    </Link>
+
                     {navigation.map((item) => (
                       <Link
                         key={item.key}
@@ -144,7 +154,8 @@ export default function Navbar({ title }) {
                         <Romb>{item.name}</Romb>
                       </Link>
                     ))}
-                    <div className='mt-8 text-center z-20'>
+
+                    <div className='mt-8 text-center z-50'>
                       <h1 className='text-white font-semibold text-3xl mb-4'>
                         Visit Us
                       </h1>
