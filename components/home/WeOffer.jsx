@@ -6,7 +6,7 @@ import BgTomato from '../ui/backgrounds/BgTomato';
 
 const WeOffer = ({ title, services }) => {
   return (
-    <div id='services' className='py-8 relative z-0 bg-black'>
+    <div id='services' className='py-8 relative z-0 bg-black overflow-hidden'>
       <TitleSection
         title={title.title}
         hasDivider={title.hasDivider}
@@ -21,16 +21,16 @@ const WeOffer = ({ title, services }) => {
       {/* we offer services */}
       <div className='flex flex-col mt-8 items-center justify-between md:flex-col lg:flex-row  gap-16 my-6 mx-auto'>
         {
-          services.length > 0 ? services.map((service,index) => {
+          services?.length > 0 ? services.map((service,index) => {
             if(index === 1){
               return(<div key={index} className='flex flex-col items-center justify-center relative pt-0 xl:pt-40 '>
                 <h5 className='hidden xl:flex text-center text-blue-200 text-xl pb-4 absolute top-0 -left-36 -right-36 max-w-7xl'>
                   {title.description}
                 </h5>
-                <ServiceCard  title={service.title} img={service.featured_img?.data?.attributes} link={service.action_link}/>
+                <ServiceCard  title={service.title} img={service.img?.data?.attributes} link={service.action_link}/>
               </div>)
             }
-            return(<ServiceCard key={index} img={service.featured_img?.data?.attributes} title={service.title} link={service.action_link}/>)
+            return(<ServiceCard key={index} img={service.img?.data?.attributes} title={service.title} link={service.action_link}/>)
           }) : null
         }
       </div>

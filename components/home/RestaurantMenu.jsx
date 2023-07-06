@@ -4,14 +4,13 @@ import BgFull from '../ui/backgrounds/BgFull';
 import TitleSection from '../ui/TitleSection';
 import Romb from '../ui/Romb/Romb';
 import MenuItem from '../ui/MenuItem';
+import Link from 'next/link';
 
 const RestaurantMenu = ({ title, items }) => {
   const [active, setActive] = useState('starters');
 
   const filteredItems = useMemo(() => {
-    return items
-      .filter((item) => item.showOnCard === true)
-      .filter((item) => {
+    return items.filter((item) => {
         if (active === 'dine-in') {
           return (
             item.category !== 'starters' &&
@@ -64,13 +63,18 @@ const RestaurantMenu = ({ title, items }) => {
             <MenuItem
               key={item.id}
               name={item.name}
-              img={item?.card_img?.data?.attributes}
+              img={item?.img?.data?.attributes}
               price={price}
               description={item.description}
             />
           );
         })}
       </section>
+      <div className='grid m-2'>
+      <Link href={'/menu'} className='text-gold-400 mx-auto text-xl place-self-center border-b-2 hover:border-gold-400 border-b-transparent'>
+        View All
+      </Link>
+      </div>
       <BgFull />
     </div>
   );

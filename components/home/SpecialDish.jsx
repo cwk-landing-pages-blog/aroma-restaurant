@@ -1,4 +1,3 @@
-import { getImgUrl } from '@/utils/getImgUrl';
 import React from 'react';
 import TitleSection from '../ui/TitleSection';
 import Image from 'next/image';
@@ -10,8 +9,8 @@ import BgBiber from '../ui/backgrounds/BgBiber';
 import { aromaSocials } from '@/utils/constants';
 
 const SpecialDish = ({ title }) => {
-  const imgUrl = getImgUrl(title?.img?.data?.attributes?.url);
   const price = title?.price
+  const imgUrl = title?.section_img?.data?.attributes?.url
 
   return (
     <section className='flex flex-col md:flex-row w-full justify-center md:justify-evenly items-center p-2 md:p-16'>
@@ -51,7 +50,7 @@ const SpecialDish = ({ title }) => {
             />
           </div>
           <Link
-            href='#menu'
+            href='/menu'
             className='py-2 px-4 bg-zinc-800 text-gold-400 border border-gold-400 uppercase rounded-md '
           >
             View Menu

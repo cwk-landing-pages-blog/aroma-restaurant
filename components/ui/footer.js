@@ -9,7 +9,34 @@ import ExternalLink from '../ExternalLink';
 import { AiFillInstagram } from 'react-icons/ai';
 import { BsFacebook } from 'react-icons/bs';
 
-export default function Footer({ contact }) {
+export default function Footer({ socials }) {
+  const getSocial = (item) => {
+    console.log('🚀 ~ file: footer.js:14 ~ getSocial ~ item:', item);
+    switch (item.name) {
+      case 'instagram':
+        return (
+          <ExternalLink
+            href={item.href}
+            title={item.display_name}
+            icon={
+              <AiFillInstagram className='text-pink-600 bg-white rounded-full p-1 text-3xl animate-pulse z-20' />
+            }
+          />
+        );
+      case 'facebook':
+        return (
+          <ExternalLink
+            href={item.href}
+            title={item.display_name}
+            icon={
+              <BsFacebook className='text-sky-700  rounded-full p-1 text-4xl animate-pulse z-20' />
+            }
+          />
+        );
+      default:
+        break;
+    }
+  };
   return (
     <div className='relative z-20'>
       <>
@@ -33,26 +60,9 @@ export default function Footer({ contact }) {
               </h1>
             </Link>
 
-            <TitleSection
-              hasDivider
-              title={'Social Networks'}
-              subtitle={'Follow Us 👍'}
-            >
+            <TitleSection hasDivider title={'Social Networks'}>
               <div className='flex w-full flex-col md:flex-row items-center justify-center gap-8 my-8'>
-                <ExternalLink
-                  href={contact[1].link}
-                  title='Keep Up on Instagram'
-                  icon={
-                    <AiFillInstagram className='text-pink-600 bg-white rounded-full p-1 text-3xl animate-pulse z-20' />
-                  }
-                />
-                <ExternalLink
-                  href={contact[0].link}
-                  title='Like us on Facebook'
-                  icon={
-                    <BsFacebook className='text-sky-700  rounded-full p-1 text-4xl animate-pulse z-20' />
-                  }
-                />
+                {socials?.map((social) => getSocial(social))}
               </div>
             </TitleSection>
           </div>

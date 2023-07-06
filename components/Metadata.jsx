@@ -3,7 +3,7 @@ import React from "react";
 import { version } from '../package.json';
 
 const Metadata = ({
-  title,
+  title= 'Aroma Restaurant',
   image = '',
   description = 'Landing Page for Aroma italian restaurant',
   author = 'kolpaja',

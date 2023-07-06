@@ -13,20 +13,37 @@ import Testimonials from '@/components/home/Testimonials';
 import Faq from '@/components/home/Faq';
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
+import { getAllPageData } from '@/utils/api';
 
-export default function Home({
-  page,
-  hero,
-  weOffer,
-  ourStrength,
-  menu,
-  specialDish,
-  socialNetworks,
-}) {
-  const title = page?.name;
+export default function Home({ data }) {
+  const title = 'Aroma Restaurant';
+
+  if (data === undefined && data?.data?.attributes === undefined) {
+    return (
+      <Layout>
+        <Head>
+          <title>Aroma Restaurant</title>
+        </Head>
+      </Layout>
+    );
+  }
+  console.log('🚀 ~ file: index.js:18 ~ Home ~ data:', data?.data?.attributes);
+
+  const {
+    heros,
+    we_offer_title,
+    we_offer_items,
+    our_story_title,
+    special_section,
+    menu_items,
+    menu_title,
+    google_map_location,
+    social_networks,
+  } = data?.data?.attributes;
+
   const metadata = {
     title,
-    description: page?.description,
+    description: 'page?.description',
     image: '',
   };
 
@@ -36,23 +53,18 @@ export default function Home({
         <title>{title}</title>
       </Head>
 
-      {/* TODO hero + slogans + what we serve*/}
-      <Hero hero={hero} />
+      <Hero hero={heros} />
 
       {/* weOffer */}
-      <WeOffer {...weOffer} />
+      <WeOffer title={we_offer_title} services={we_offer_items} />
       {/* TODO our story section */}
-      <OurStory
-        img={page?.our_story_img?.data?.attributes}
-        title={page?.our_story_title}
-      />
+      <OurStory title={our_story_title} />
 
       {/* Special Dish, featured dish comes along with the info that as The Meal of the dat */}
-      {/* TODO ask for details */}
-      <SpecialDish title={specialDish} />
+      <SpecialDish title={special_section} />
 
       {/* tab menu for each category main ones */}
-      <RestaurantMenu {...menu} />
+      <RestaurantMenu title={menu_title} items={menu_items} />
 
       {/* featured carousel menu items */}
       {/* <FeaturedMenu /> */}
@@ -66,82 +78,29 @@ export default function Home({
       {/* FAQ section */}
       {/* <Faq /> */}
 
-      <Address
-        address={page?.google_map_location?.data?.attributes}
-        contact={socialNetworks}
-      />
+      <Address address={google_map_location} contact={social_networks} />
 
-      <Footer contact={socialNetworks} />
+      <Footer socials={social_networks} />
     </Layout>
   );
 }
 
 export async function getStaticProps(context) {
-  const pageRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API + '?populate=*'
-  );
-  const menuItemsRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API +
-      '?populate[0]=menu_items.price.currencies&populate[1]=menu_items.card_img'
-  );
-  const hero_res = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API +
-      '?populate[0]=hero&populate[1]=hero.img&populate[2]=hero.content'
-  );
-  const weOfferRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API +
-      '?populate[0]=we_offer_service_item.featured_img.data.attributes.url&populate[1]=we_offer_service'
-  );
+  const result = await getAllPageData();
 
-  const ourStrengthRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API + '?populate[0]=service_item.featured_img'
-  );
-  const specialDishRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API +
-      '?populate[0]=special_dish_title.price&populate[1]=special_dish_title.img'
-  );
-  const socialNetworksRes = await fetch(
-    process.env.NEXT_PUBLIC_AROMA_API + '?populate[0]=social_networks.icon'
-  );
-  const aroma_data = await pageRes.json();
-  const menuItems = await menuItemsRes.json();
-  const hero = await hero_res.json();
-  const weOffer = await weOfferRes.json();
-  const ourStrength = await ourStrengthRes.json();
-  const specialDish = await specialDishRes.json();
-  const socialNetworks = await socialNetworksRes.json();
-
-  if (
-    aroma_data?.data?.attributes &&
-    hero?.data?.attributes?.hero &&
-    menuItems?.data?.attributes?.menu_items &&
-    weOffer?.data?.attributes?.we_offer_service_item &&
-    ourStrength?.data?.attributes?.service_item &&
-    specialDish?.data?.attributes?.special_dish_title &&
-    socialNetworks?.data?.attributes?.social_networks
-  ) {
+  if (result?.data !== undefined && result !== undefined) {
     return {
       props: {
-        page: aroma_data?.data?.attributes,
-        menu: {
-          title: aroma_data?.data?.attributes?.menu_items_title,
-          items: menuItems?.data?.attributes?.menu_items,
-        },
-        hero: hero?.data?.attributes?.hero,
-        ourStrength: {
-          title: aroma_data?.data?.attributes?.our_story_title,
-          cards: ourStrength?.data?.attributes?.service_item,
-        },
-        weOffer: {
-          title: aroma_data?.data?.attributes?.we_offer_service,
-          services: weOffer?.data?.attributes?.we_offer_service_item,
-        },
-        specialDish: specialDish?.data?.attributes?.special_dish_title,
-        socialNetworks: socialNetworks?.data?.attributes?.social_networks,
-      }, // will be passed to the page component as props
+        isError: false,
+        data: result.data,
+      },
     };
   }
+
   return {
-    notFound: true,
+    props: {
+      data: null,
+      isError: true,
+    },
   };
 }

@@ -9,9 +9,7 @@ import BgGarlic from '../ui/backgrounds/BgGarlic';
 
 const alt = 'Aroma restaurant story';
 
-const OurStory = ({ img, title }) => {
-  const imgUrl = getImgUrl(img.url);
-
+const OurStory = ({ title }) => {
   return (
     <div id='about' className='bg-zinc-900 gap-8 w-full mx-auto py-8 relative z-0 flex flex-col items-center justify-center md:flex-row'>
       <div className='flex flex-col items-center justify-start gap-8'>
@@ -51,7 +49,7 @@ const OurStory = ({ img, title }) => {
       </div>
       <div className='relative'>
         <Image
-          src={imgUrl}
+          src={title?.section_img?.data?.attributes?.url}
           className='sm:w-96 md:w-full '
           width={700}
           height={605}

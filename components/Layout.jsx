@@ -11,7 +11,7 @@ const Layout = ({ metadata, children }) => {
         <meta charSet='utf-8' />
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <div>
+      <div className='overflow-x-hidden'>
       <Navbar title={'Aroma'} />
 
       {children}

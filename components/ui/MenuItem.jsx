@@ -4,7 +4,7 @@ import React from 'react';
 import menuItemPng from '@/assets/icons/menu-item.png';
 
 const MenuItem = ({ img, name, price, description, hasDivider = true }) => {
-  const imgSrc = img?.url ? getImgUrl(img?.url) : menuItemPng;
+  const imgSrc = img?.url ? img.url: menuItemPng;
 
   return (
     <div className='relative z-20 pb-4 w-full'>
@@ -27,7 +27,7 @@ const MenuItem = ({ img, name, price, description, hasDivider = true }) => {
           {price}
         </div>
 
-        {description ? <p className='text-sm md:text-base my-2 md:m-0 text-gray-200'>{description}</p>: null}
+        {description ? <p className='text-sm md:text-base my-2 md:m-0 text-gold-400 opacity-90'>{description}</p>: null}
       </div>
     </div>
   );
