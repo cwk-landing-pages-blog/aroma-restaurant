@@ -14,6 +14,7 @@ import Faq from '@/components/home/Faq';
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
 import { getAllPageData } from '@/utils/api';
+import avatarUrl from '@/assets/imgs/avatar.jpg';
 
 export default function Home({ data }) {
   const title = 'Aroma Restaurant';
@@ -22,7 +23,7 @@ export default function Home({ data }) {
     return (
       <Layout>
         <Head>
-          <title>Aroma Restaurant</title>
+          <title>Home - Aroma Restaurant</title>
         </Head>
       </Layout>
     );
@@ -44,7 +45,7 @@ export default function Home({ data }) {
   const metadata = {
     title,
     description: 'page?.description',
-    image: '',
+    image: avatarUrl,
   };
 
   return (
