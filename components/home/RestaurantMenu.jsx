@@ -72,7 +72,7 @@ const RestaurantMenu = ({ title, items }) => {
       </section>
       <div className='grid m-2'>
       <Link href={'/menu'} className='text-gold-400 mx-auto text-xl place-self-center border-b-2 hover:border-gold-400 border-b-transparent'>
-        View All
+        explore our menu
       </Link>
       </div>
       <BgFull />

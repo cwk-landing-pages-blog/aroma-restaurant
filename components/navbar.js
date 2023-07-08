@@ -60,7 +60,7 @@ export default function Navbar({ title }) {
         }
       >
         <div className='w-full flex justify-between gap-4'>
-          <Link
+          <a
             target='_blank'
             href={headerContacts.googleMapLocation}
             className='flex justify-center gap-2 items-center text-gray-400 text-base hover:cursor-pointer '
@@ -69,7 +69,7 @@ export default function Navbar({ title }) {
             <span className='border-b border-transparent hover:border-b hover:border-gold-400'>
               {headerContacts.address}
             </span>
-          </Link>
+          </a>
 
           <h4 className='flex items-center gap-2 text-md'>
             <BsClockHistory className='text-lg' />
@@ -77,17 +77,18 @@ export default function Navbar({ title }) {
           </h4>
 
           <div>
-            <Link
-              className='text-base font-bold flex justify-center gap-2 items-center tracking-wide text-gold-400'
+            <a
+              className='text-base font-bold flex a-center gap-2 items-center tracking-wide text-gold-400'
               href={`tel:${headerContacts.tel}`}
               title=' Call Now! '
             >
               <FaPhoneAlt className='text-xl animate-pulse' />{' '}
               {headerContacts.tel}
-            </Link>
+            </a>
           </div>
         </div>
       </div>
+
       <nav className='w-full bg-black md:bg-transparent  container relative flex flex-wrap items-center justify-start px-8 mx-auto lg:justify-center xl:px-0'>
         {/* Logo  */}
         <Disclosure>
@@ -151,6 +152,7 @@ export default function Navbar({ title }) {
                         href={`/${item.key}`}
                         className='w-full  px-4 py-2 font-bold -ml-4 text-gray-500 rounded-md dark:text-gray-300 hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 dark:focus:bg-gray-800 focus:outline-none dark:focus:bg-trueGray-700'
                         onClick={() => close()}
+                        title={`navigate to ${item.name}`}
                       >
                         <Romb>{item.name}</Romb>
                       </Link>
@@ -163,6 +165,7 @@ export default function Navbar({ title }) {
                       <Link
                         target='_blank'
                         href={headerContacts.googleMapLocation}
+                        title={`navigate to ${headerContacts.address}`}
                         className='flex justify-center gap-2 items-center text-gray-400 text-lg mb-4 hover:cursor-pointer '
                       >
                         <MdLocationPin className='text-red-800 text-xl leading-6' />
@@ -187,11 +190,16 @@ export default function Navbar({ title }) {
                         <Link
                           className='text-base flex justify-center gap-2 items-center tracking-wider text-gold-400'
                           href={`tel:${headerContacts.tel}`}
+                          title={`call ${headerContacts.tel}}`}
                         >
                           <FaPhoneAlt /> {headerContacts.tel}
                         </Link>
                       </div>
-                      <Link href={'/links'} className='flex gap-1 items-center'>
+                      <Link
+                        href={'/links'}
+                        className='flex gap-1 items-center'
+                        title='aroma restaurant links tree'
+                      >
                         <p className='text-green-400 text-lg'>
                           Aroma Restaurant Tree
                         </p>

@@ -149,7 +149,7 @@ const links = ({ isError, data }) => {
         {/* header */}
         <header className='w-full p-2'>
           <nav className='flex max-w-4xl mx-auto flex-row justify-between'>
-            <Link href={'/'}>
+            <Link href={'/'} target='_parent'>
               <div className='flex gap-1 items-center'>
                 <MdSettingsBackupRestore className='text-zinc-400 text-3xl' />
                 <h2 className='text-gold-400 text-lg hover:underline'>

@@ -1,10 +1,8 @@
-import { getImgUrl } from '@/utils/getImgUrl';
-import React from 'react';
-import TitleSection from '../ui/TitleSection';
+import call from '@/assets/icons/call.png';
+import { headerContacts } from '@/utils/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { headerContacts } from '@/utils/constants';
-import call from '@/assets/icons/call.png';
+import TitleSection from '../ui/TitleSection';
 import BgGarlic from '../ui/backgrounds/BgGarlic';
 
 const alt = 'Aroma restaurant story';
@@ -24,7 +22,7 @@ const OurStory = ({ title }) => {
           </p>
         </TitleSection>
 
-        <Link href={`tel:${headerContacts.tel}`}>
+        <Link href={`tel:${headerContacts.tel}`} title={'Book Through Call' + headerContacts.tel}>
           <h3 className='text-white text-2xl text-center pb-2'>
             Book Through Call
           </h3>

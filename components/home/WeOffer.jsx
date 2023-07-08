@@ -23,14 +23,14 @@ const WeOffer = ({ title, services }) => {
         {
           services?.length > 0 ? services.map((service,index) => {
             if(index === 1){
-              return(<div key={index} className='flex flex-col items-center justify-center relative pt-0 xl:pt-40 '>
+              return(<div key={service.action_link + index} className='flex flex-col items-center justify-center relative pt-0 xl:pt-40 '>
                 <h5 className='hidden xl:flex text-center text-blue-200 text-xl pb-4 absolute top-0 -left-36 -right-36 max-w-7xl'>
                   {title.description}
                 </h5>
                 <ServiceCard  title={service.title} img={service.img?.data?.attributes} link={service.action_link}/>
               </div>)
             }
-            return(<ServiceCard key={index} img={service.img?.data?.attributes} title={service.title} link={service.action_link}/>)
+            return(<ServiceCard key={service.action_link + index} img={service.img?.data?.attributes} title={service.title} link={service.action_link}/>)
           }) : null
         }
       </div>

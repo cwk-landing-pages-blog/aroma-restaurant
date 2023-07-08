@@ -19,7 +19,7 @@ export default function Hero({ hero }) {
         // onSlideChange={(props) => console.log('slide change', props)}
         // onSwiper={(swiper) => console.log(swiper)}
       >
-        {hero?.map((item) => {
+        {hero !== undefined && hero?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
               <div className='hero_content'>

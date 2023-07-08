@@ -1,10 +1,9 @@
 import Layout from '@/components/Layout';
+import MenuItem from '@/components/ui/MenuItem';
 import TitleSection from '@/components/ui/TitleSection';
 import { getMenuPageData } from '@/utils/api';
+import { menuCategory } from '@/utils/constants';
 import Head from 'next/head';
-import React from 'react';
-import {  menuCategory } from '@/utils/constants';
-import MenuItem from '@/components/ui/MenuItem';
 
 const Menu = ({ data }) => {
   const { description, menu_items } = data?.data?.attributes;

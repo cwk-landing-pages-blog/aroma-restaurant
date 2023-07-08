@@ -1,26 +1,24 @@
 import Head from 'next/head';
-import Navbar from '../components/navbar';
 import Footer from '../components/ui/footer';
 import Layout from '@/components/Layout';
 import OurStory from '@/components/home/OurStory';
 import SpecialDish from '@/components/home/SpecialDish';
 import RestaurantMenu from '@/components/home/RestaurantMenu';
-import FeaturedMenu from '@/components/home/FeaturedMenu';
-import OurStrength from '@/components/home/OurStrength';
+// import FeaturedMenu from '@/components/home/FeaturedMenu';
+// import OurStrength from '@/components/home/OurStrength';
 import Address from '@/components/home/Address';
 import Hero from '@/components/home/Hero';
-import Testimonials from '@/components/home/Testimonials';
-import Faq from '@/components/home/Faq';
-import { PageNotFoundError } from 'next/dist/shared/lib/utils';
+// import Testimonials from '@/components/home/Testimonials';
+// import Faq from '@/components/home/Faq';
+// import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import WeOffer from '@/components/home/WeOffer';
 import { getAllPageData } from '@/utils/api';
-import avatarUrl from '@/assets/imgs/avatar.jpg';
 import { s3BucketsImgUrl } from '@/utils/constants';
 
-export default function Home({ data }) {
+export default function Home({ data, isError }) {
   const title = 'Aroma Restaurant';
 
-  if (data === undefined && data?.data?.attributes === undefined) {
+  if (data === undefined && data?.data?.attributes === undefined && isError) {
     return (
       <Layout>
         <Head>

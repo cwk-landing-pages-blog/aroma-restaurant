@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
-import Container from './container';
 import TitleSection from './TitleSection';
 import BgLeaves from './backgrounds/BgLeaves';
 import BgBiber from './backgrounds/BgBiber';
@@ -15,6 +14,7 @@ export default function Footer({ socials }) {
       case 'instagram':
         return (
           <ExternalLink
+            key={item.display_name}
             href={item.href}
             title={item.display_name}
             icon={
@@ -26,6 +26,7 @@ export default function Footer({ socials }) {
         return (
           <ExternalLink
             href={item.href}
+            key={item.display_name}
             title={item.display_name}
             icon={
               <BsFacebook className='text-sky-700  rounded-full p-1 text-4xl animate-pulse z-20' />
@@ -69,14 +70,14 @@ export default function Footer({ socials }) {
 
         <div className='p-2 z-20 bg-black opacity-50 relative text-lg text-center text-gray-300'>
           <h6>Copyright © {new Date().getFullYear()}. Made with ♥ by</h6>
-          <Link
+          <a
             href='https://codewithkoli.com/'
             target='_blank'
             rel='noopener'
             className='text-gold-400'
           >
             CWK ( codewithkoli )
-          </Link>
+          </a>
         </div>
       </>
 

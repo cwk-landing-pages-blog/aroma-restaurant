@@ -1,10 +1,9 @@
-import { getImgUrl } from '@/utils/getImgUrl';
 import Image from 'next/image';
 import React from 'react';
 import menuItemPng from '@/assets/icons/menu-item.png';
 
 const MenuItem = ({ img, name, price, description, hasDivider = true }) => {
-  const imgSrc = img?.url ? img.url: menuItemPng;
+  const imgSrc = img?.formats?.thumbnail?.url ? img?.formats?.thumbnail?.url : menuItemPng;
 
   return (
     <div className='relative z-20 pb-4 w-full'>
