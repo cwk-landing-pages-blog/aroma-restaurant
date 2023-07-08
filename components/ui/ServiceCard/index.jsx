@@ -15,16 +15,16 @@ const ServiceCard = ({ img, title, link }) => {
       <div className={styles.card_wrapper}>
         <Image src={backLayer} className={styles.backImg} alt='back layer' />
         <div className={styles.card}>
-          <Image src={img?.url} alt={imgAlt} fill  className={styles.cardImg} />
+          <Image priority src={img?.url} alt={imgAlt} quality={50} width={300} height={360}  className={styles.cardImg} />
         </div>
       </div>
       <h2 className='my-4 text-white text-2xl md:text-3xl font-semibold text-center'>
         {title}
       </h2>
       {/* if he asks for more details */}
-      {/* <Link  href={link} target='_self' className='text-gold-400 text-xl border-b-2 hover:border-gold-400 border-b-transparent'>
+      <h4 className='text-gold-400 text-xl border-b-2 hover:border-gold-400 border-b-transparent'>
         View all {category}
-      </Link> */}
+      </h4>
       </>
     </Link>
   );

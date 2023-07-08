@@ -82,7 +82,8 @@ export default function Navbar({ title }) {
               href={`tel:${headerContacts.tel}`}
               title=' Call Now! '
             >
-              <FaPhoneAlt className='text-xl animate-pulse' />{' '}
+              <FaPhoneAlt className='text-xl animate-pulse' />
+              {' call '}
               {headerContacts.tel}
             </a>
           </div>
@@ -192,7 +193,9 @@ export default function Navbar({ title }) {
                           href={`tel:${headerContacts.tel}`}
                           title={`call ${headerContacts.tel}}`}
                         >
-                          <FaPhoneAlt /> {headerContacts.tel}
+                          <FaPhoneAlt />
+                          {' call '}
+                          {headerContacts.tel}
                         </Link>
                       </div>
                       <Link

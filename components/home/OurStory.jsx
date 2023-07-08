@@ -33,7 +33,7 @@ const OurStory = ({ title }) => {
               width={32}
               height={32}
               alt={`call restaurant to book, tel ${headerContacts.tel}`}
-            />{' '}
+            />{' call '}
             {headerContacts.tel}
           </p>
         </Link>
